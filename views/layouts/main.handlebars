@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Blog</title>
+  <link rel="stylesheet" href="/stylesheets/tailwind.css">
+</head>
+
+<body class="flex flex-col h-screen">
+    <header class="flex items-center justify-between flex-wrap bg-gray-800 p-6 text-white">
+      <h1 class="font-semibold text-xl tracking-tight">
+        Tech Blog
+      </h1>
+      <nav>
+        
+        <a class="inline-block rounded py-1 px-3 bg-white-200 text-white-800 hover:text-red-600 hover:bg-white-800 hover:border-white-500-rounded" href="/">Home</a>
+        <a class="inline-block rounded py-1 px-3 bg-white-200 text-white-800 hover:text-red-600 hover:bg-white-800 hover:border-white-500-rounded" href="/dashboard">Dashboard</a>
+        {{!-- If logged in don't show login link --}}
+        {{#unless loggedIn}}
+        <a class="inline-block rounded py-1 px-3 bg-white-200 text-white-800 hover:text-red-600 hover:bg-white-800 hover:border-white-500-rounded" href="/login">Login</a>
+        {{/unless}}
+        {{!-- If you are logged in create logout button --}}
+        {{#if loggedIn}}
+        <button id="logout" class="btn-no-style inline-block rounded py-1 px-3 bg-white-200 text-white-800 hover:text-red-600 hover:bg-white-800 hover:border-white-500-rounded">Logout</button>
+        {{/if}}
+      </nav>
+    </header>
+    <main class="flex-grow">
+      {{{ body }}}
+    </main>
+    <footer class="h-15 flex justify-center bg-gray-800 p-6 text-white font-semibold text-xl">
+      Tech Blog
+    </footer>
+{{#if loggedIn}}
+<script src="/javascript/logout.js"></script>
+{{/if}}
+</body>
+
+</html>
